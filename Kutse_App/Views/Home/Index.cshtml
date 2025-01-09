@@ -4,14 +4,14 @@
 
 <main>
     <div class="jumbotron">
-        <h1>@ViewBag.Greeting , kallis sõber!</h1>
+        <h1 style="color: #333; text-align: center;">@ViewBag.Greeting , kallis sõber!</h1>
     </div>
-    <div>
+    <div style="text-align: center; margin-top: 20px;">
         @ViewBag.Message
         <br />
-        <img src="~/Images/Kutse_App.jpg" />
+        <img src="~/Images/Kutse_App.jpg" alt="Kutse_App" style="max-width: 100%; height: auto;" />
     </div>
-    <div>
+    <div style="text-align: center; margin-top: 20px;">
         @Html.ActionLink("Vastan", "Ankeet", "Ankeet", new { @class = "btn btn-primary" })
     </div>
 </main>

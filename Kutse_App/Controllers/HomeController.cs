@@ -72,5 +72,6 @@ namespace Kutse_App.Controllers
                 ViewBag.Message = "Mul on kahju! Ei saa kirja saada!!!";
             }
         }
+        public void
     }
 }
