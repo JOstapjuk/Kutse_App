@@ -1,0 +1,27 @@
+﻿@model Kutse_App.Models.Guest
+
+@{
+    ViewBag.Title = "Thanks";
+}
+
+<div>
+    <p> Tänan sind @Model.Name </p>
+</div>
+
+<div>
+    @if (Model.WillAttend == true)
+    {
+        @:Ootame sind kallis sõber!
+        <p>
+            <img src="~/Images/happy.jpg"
+        </p>
+    }
+    else
+    {
+        @:Väga kurb uudis. Näeme hiljem!
+        <p>
+            <img src="~/Images/sad.jpg"
+        </p>
+    }
+    @ViewBag.Message @*ViewBag.Message - отчет об отправке письма с приглашением*@
+</div>
