@@ -9,12 +9,14 @@
     <p>
         Sinu valik:
         @Html.DropDownListFor(x => x.WillAttend,
-        new[]
-        {
+         new[]
+         {
             new SelectListItem() {Text="Tule kindlasti!", Value=bool.TrueString},
             new SelectListItem() {Text="Kahjuks ei saa tulla!", Value=bool.FalseString}
-        }, "Vali siit")
+         }, "Vali siit")
     </p>
 
     <input type="submit" value="Saada vastus" />
+
+    <br />
 }
