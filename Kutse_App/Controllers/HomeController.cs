@@ -98,7 +98,7 @@ namespace Kutse_App.Controllers
                     WebMail.From = "jelizaveta.ostapjuk.work@gmail.com";
 
                     WebMail.Send(guest.Email, "Meeldetuletus", guest.Name + ", ara unusta. Pidu toimub 20.01.25! Sind ootavad väga!",
-                    null, guest.Email,
+                    null, "jelizaveta.ostapjuk.work@gmail.com",
                     filesToAttach: new String[] { Path.Combine(Server.MapPath("~/Images/"), Path.GetFileName("yippy.jpg ")) }
                    );
 
