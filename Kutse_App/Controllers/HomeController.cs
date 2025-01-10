@@ -36,9 +36,13 @@ namespace Kutse_App.Controllers
             {
                 greeting = "Tere päevast!";
             }
-            else
+            else if (hour >= 18 && hour < 21)
             {
                 greeting = "Tere õhtust!";
+            }
+            else
+            {
+                greeting = "Head ööd!";
             }
 
             ViewBag.Greeting = greeting;
