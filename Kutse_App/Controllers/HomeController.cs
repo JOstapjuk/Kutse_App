@@ -116,5 +116,13 @@ namespace Kutse_App.Controllers
 
             return View("Thanks", guest);
         }
+
+        GuestContext db = new GuestContext();
+        public ActionResult Guest() 
+        {
+            IEnumerable<Guest> guests = db.Guests;
+            return View(guests);
+        }
+
     }
 }
