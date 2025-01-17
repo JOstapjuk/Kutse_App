@@ -9,14 +9,22 @@ namespace Kutse_App.Models
     public class Guest
     {
         public int Id { get; set; }
+
         [Required(ErrorMessage = "Sisesta nimi")]
+        [Display(Name = "Nimi")]
         public string Name { get; set; }
+
+        [Display(Name = "E-post")]
         [Required(ErrorMessage = "Sisesta email")]
         [RegularExpression(@".+\@.+\..+", ErrorMessage = "Valesti sisestatud email")]
         public string Email { get; set; }
+
+        [Display(Name = "Telefon")]
         [Required(ErrorMessage = "Sisesta telefoni number")]
         [RegularExpression(@"\+372.+", ErrorMessage = "Numbri alguses peal olema +372")]
         public string Phone { get; set; }
+
+        [Display(Name = "Kas tuleb?")]
         [Required(ErrorMessage = "Sisesta oma valik")]
         public bool? WillAttend { get; set; }
     }

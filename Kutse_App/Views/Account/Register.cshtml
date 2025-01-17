@@ -1,6 +1,6 @@
 ﻿@model Kutse_App.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registreeri";
 }
 
 <main aria-labelledby="title">
@@ -9,7 +9,7 @@
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <h4>Create a new account.</h4>
+        <h4>Looge uus konto.</h4>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="row">
@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="offset-md-2 col-md-10">
-                <input type="submit" value="Register" class="btn btn-outline-dark" />
+                <input type="submit" value="Registreeri" class="btn btn-outline-dark" />
             </div>
         </div>
     }

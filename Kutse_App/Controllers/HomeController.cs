@@ -23,7 +23,7 @@ namespace Kutse_App.Controllers
         {
             string greeting;
 
-            
+
 
             int month = DateTime.Now.Month;
             int hour = DateTime.Now.Hour;
@@ -65,7 +65,12 @@ namespace Kutse_App.Controllers
         public ViewResult Ankeet(Guest guest)
         {
             E_mail(guest);
-            if (ModelState.IsValid) { return View("Thanks", guest); }
+            if (ModelState.IsValid)
+            {
+                db.Guests.Add(guest);
+                db.SaveChanges();
+                return View("Thanks", guest);
+            }
             else { return View(); }
         }
         public void E_mail(Guest guest)
@@ -114,15 +119,153 @@ namespace Kutse_App.Controllers
                 }
             }
 
-            return View("Thanks", guest);
+            return View("Aitäh", guest);
         }
+        HolidayContext db2 = new HolidayContext();
 
         GuestContext db = new GuestContext();
-        public ActionResult Guest() 
+        [Authorize]
+        public ActionResult Guests() 
         {
             IEnumerable<Guest> guests = db.Guests;
             return View(guests);
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Guest guest)
+        {
+            db.Guests.Add(guest);
+            db.SaveChanges();
+            return RedirectToAction("Guests");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Guest g = db.Guests.Find(id);
+            if (g==null)
+            {
+                return HttpNotFound();
+            }
+            return View(g);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Guest g = db.Guests.Find(id);
+            if (g == null)
+            {
+                return HttpNotFound();
+            }
+            db.Guests.Remove(g);
+            db.SaveChanges();
+            return RedirectToAction("Guests");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id) 
+        {
+            Guest g = db.Guests.Find(id);
+            if (g == null)
+            {
+                return HttpNotFound();
+            }
+            return View(g);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EditConfirmed(Guest guest)
+        {
+            db.Entry(guest).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Guests");
+        }
+
+        public ActionResult WillAttendGuests()
+        {
+            var guests = db.Guests.Where(g => g.WillAttend == true).ToList();
+            return View("Guests", guests);
+        }
+
+        public ActionResult NotAttendingGuests()
+        {
+            var guests = db.Guests.Where(g => g.WillAttend == false).ToList();
+            return View("Guests", guests);
+        }
+        public ActionResult AllGuests()
+        {
+            var guests = db.Guests.ToList();
+            return View("Guests", guests);
+        }
+
+        public ActionResult Holidays()
+        {
+            IEnumerable<Holiday> holidays = db2.Holidays;
+            return View(holidays);
+        }
+
+        [HttpGet]
+        public ActionResult Create2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create2(Holiday holiday)
+        {
+            db2.Holidays.Add(holiday);
+            db2.SaveChanges();
+            return RedirectToAction("Holidays");
+        }
+
+        [HttpGet]
+        public ActionResult Delete2(int id)
+        {
+            Holiday h = db2.Holidays.Find(id);
+            if (h == null)
+            {
+                return HttpNotFound();
+            }
+            return View(h);
+        }
+
+        [HttpPost, ActionName("Delete2")]
+        public ActionResult DeleteConfirmed2(int id)
+        {
+            Holiday h = db2.Holidays.Find(id);
+            if (h == null)
+            {
+                return HttpNotFound();
+            }
+            db2.Holidays.Remove(h);
+            db2.SaveChanges();
+            return RedirectToAction("Holidays");
+        }
+
+        [HttpGet]
+        public ActionResult Edit2(int? id)
+        {
+            Holiday h = db2.Holidays.Find(id);
+            if (h == null)
+            {
+                return HttpNotFound();
+            }
+            return View(h);
+        }
+
+        [HttpPost, ActionName("Edit2")]
+        public ActionResult EditConfirmed2(Holiday holiday)
+        {
+            db2.Entry(holiday).State = System.Data.Entity.EntityState.Modified;
+            db2.SaveChanges();
+            return RedirectToAction("Holidays");
+        }
     }
 }

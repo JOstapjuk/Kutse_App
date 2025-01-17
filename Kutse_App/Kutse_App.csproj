@@ -171,6 +171,9 @@
     <Compile Include="Models\Guest.cs" />
     <Compile Include="Models\GuestContext.cs" />
     <Compile Include="Models\GuestDBInitializer.cs" />
+    <Compile Include="Models\Holiday.cs" />
+    <Compile Include="Models\HolidayContext.cs" />
+    <Compile Include="Models\HolidayDBInitializer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +250,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Ankeet.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
+    <Content Include="Views\Home\Guests.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\Holidays.cshtml" />
+    <Content Include="Views\Home\Create2.cshtml" />
+    <Content Include="Views\Home\Delete2.cshtml" />
+    <Content Include="Views\Home\Edit2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
